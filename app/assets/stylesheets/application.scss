@@ -2,6 +2,7 @@
 @import 'tabs';
 @import 'variables';
 @import 'card';
+@import 'article';
 
 html {
   word-spacing: 1px;
@@ -22,4 +23,15 @@ html {
 
 body {
     font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: $text-base-color;
+}
+
+
+.container {
+    width: 100%;
+    padding: 16px;
 }

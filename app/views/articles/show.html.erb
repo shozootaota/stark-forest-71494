@@ -6,15 +6,17 @@
             <p>oota</p>
             <p><%= @article.display_created_at %></p>
         </div>
-        <div class="article_detail_actions">
-            <div class="dropdown">
-                <%= image_tag 'actions.svg', class: 'dropbtn' %>
-                <div class="dropdown-content mini">
-                    <%= link_to '編集する', edit_article_path(@article) %>
-                    <%= link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' } %>
+        <% if user_signed_in? && current_user.has_written?(@article) %>
+            <div class="article_detail_actions">
+                <div class="dropdown">
+                    <%= image_tag 'actions.svg', class: 'dropbtn' %>
+                    <div class="dropdown-content mini">
+                        <%= link_to '編集する', edit_article_path(@article) %>
+                        <%= link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' } %>
+                    </div>
                 </div>
             </div>
-        </div>
+        <% end %>
     </div>
     <div class="article_content">
         <%= @article.content %>

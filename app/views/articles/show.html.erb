@@ -24,4 +24,15 @@
     <div class="article_heart">
         <%= image_tag 'heart.svg' %>
     </div>
+    <%= link_to 'コメントを追加する', new_article_comment_path(@article), class: "" %>
 </div>
+
+<% comments = @article.comments %>
+<% comments.each do |comment| %>
+    <div class="article_comment">
+        <p>
+            <%= comment.content %>
+        </p>
+    </div>
+<% end %>
+

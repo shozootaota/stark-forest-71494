@@ -1,0 +1,18 @@
+<div class="container">
+    <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+        <li>
+            <%= message %>
+        </li>
+        <% end %>
+    </ul>
+    <%= form_with(model: @comment, url: article_comments_path(@comment.article), local: true) do |f| %>
+    <div>
+        <%= f.label :content, '内容' %>
+    </div>
+    <div>
+        <%= f.text_area :content %>
+    </div>
+    <%= f.submit '投稿する', class: '' %>
+    <% end %>
+</div>

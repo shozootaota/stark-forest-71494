@@ -1,6 +1,6 @@
 <div class="container">
     <div class="profile_image">
-        <%= image_tag 'default-avatar.png' %>
+        <%= image_tag  current_user.avatar_image %>
     </div>
     <div class="profile_name">
         <%= current_user.profile&.nickname %>

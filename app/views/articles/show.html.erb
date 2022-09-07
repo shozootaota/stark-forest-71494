@@ -26,11 +26,23 @@
     <div class="article_content">
         <%= @article.content %>
     </div>
-    <div class="article_heart">
-        <%= image_tag 'heart.svg' %>
-    </div>
-    <%= link_to 'コメントを追加する', new_article_comment_path(@article), class: "" %>
+    <% if user_signed_in? %>
+        <% if current_user.liked?(@article) %>
+            <div class="article_heart">
+                <%= link_to article_like_path(@article), data: { method: 'delete' } do %>
+                    <%= image_tag 'heart-active.svg' %>
+                <% end %>
+            </div>
+        <% else %>
+            <div class="article_heart">
+                <%= link_to article_like_path(@article), data: { method: 'post' } do %>
+                    <%= image_tag 'heart.svg' %>
+                <% end %>
+        <% end %>
+    <% end %>
+    
 </div>
+<%= link_to 'コメントを追加する', new_article_comment_path(@article), class: "" %>
 
 <% comments = @article.comments %>
 <% comments.each do |comment| %>

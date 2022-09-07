@@ -1,8 +1,10 @@
 <%= link_to article_path(article) do %>
 <div class="card">
+    <% if article.eyecatch.attached? %>
     <div class="card_image">
-        <%= image_tag 'eyecatch1.png' %>
+        <%= image_tag article.eyecatch %>
     </div>
+    <% end %>
     <div class="card_content">
         <div class="card_title">
             <%= article.title %>
@@ -12,7 +14,7 @@
             <span>23</span>
         </div>
         <div class="card_detail">
-            <%= image_tag 'default-avatar.png' %>
+            <%= image_tag article.user.avatar_image %>
             <div>
                 <p>oota</p>
                 <p><%= article.display_created_at %></p>

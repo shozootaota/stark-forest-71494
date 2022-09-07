@@ -1,6 +1,6 @@
 <div class="container">
     <%= render 'tabs' %>
     <% @articles.each do |article| %>
-        <%= render 'article', article: article %>
+        <%= render 'commons/article', article: article %>
     <% end %>
 </div>

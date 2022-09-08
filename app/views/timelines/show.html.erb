@@ -1,0 +1,6 @@
+<div class="container">
+    <h2>フォローした人の投稿</h2>
+    <% @articles.each do |article| %>
+        <%= render 'commons/article', article: article %>
+    <% end %>
+</div>

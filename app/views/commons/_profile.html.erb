@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="profile_image">
+        <%= image_tag  user.avatar_image %>
+    </div>
+    <div class="profile_name">
+        <%= user.profile&.nickname %>
+    </div>
+    <% if user == current_user %>
+        <%= link_to 'Edit', edit_profile_path %>
+            <% else %>
+                <% if current_user&.has_followed?(user) %>
+                    <%= link_to 'フォロー解除', account_unfollows_path(user), data: {method: 'post'} %>
+                <% else %>
+                    <%= link_to 'フォロー', account_follows_path(user), data: {method: 'post'} %>
+                <% end %>
+    <% end %>
+
+    <div class="profile_introduction">
+        <%= user.profile&.introduction %>
+    </div>
+
+    <% user.articles.each do |article| %>
+        <%= render 'commons/article', article: article %>
+    <% end %>
+</div>

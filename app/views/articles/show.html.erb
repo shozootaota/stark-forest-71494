@@ -8,11 +8,14 @@
         <h1 class="article_title"><%= @article.title %></h1>
         <div class="article_detail">
             <%= link_to account_path(@article.user) do %>
-                <%= image_tag @article.user.avatar_image %>
+            <%= image_tag @article.user.avatar_image %>
             <% end %>
             <div>
                 <p>oota</p>
                 <p><%= @article.display_created_at %></p>
+            </div>
+            <div class="article_content">
+                <%= @article.content %>
             </div>
             <% if user_signed_in? && current_user.has_written?(@article) %>
             <div class="article_detail_actions">
@@ -26,31 +29,27 @@
             </div>
             <% end %>
         </div>
-        <div class="article_content">
-            <%= @article.content %>
-        </div>
-        <% if user_signed_in? %>
+            <% if user_signed_in? %>
             <% if current_user.liked?(@article) %>
-                <div class="article_heart">
-                    <%= link_to article_like_path(@article), data: { method: 'delete' } do %>
-                        <%= image_tag 'heart-active.svg' %>
-                    <% end %>
-                </div>
+            <div class="article_heart">
+                <%= link_to article_like_path(@article), data: { method: 'delete' } do %>
+                <%= image_tag 'heart-active.svg' %>
+                <% end %>
+            </div>
             <% else %>
-                <div class="article_heart">
-                    <%= link_to article_like_path(@article), data: { method: 'post' } do %>
-                        <%= image_tag 'heart.svg' %>
-                    <% end %>
-            <% end %>
-        <% end %>
+            <div class="article_heart">
+                <%= link_to article_like_path(@article), data: { method: 'post' } do %>
+                <%= image_tag 'heart.svg' %>
+                <% end %>
+                <% end %>
+                <% end %>
+            </div>
+            <%= link_to 'コメントを追加する', new_article_comment_path(@article), class: "" %>
 
-    </div>
-    <%= link_to 'コメントを追加する', new_article_comment_path(@article), class: "" %>
-
-        <% comments = @article.comments %>
-        <% comments.each do |comment| %>
+            <% comments = @article.comments %>
+            <% comments.each do |comment| %>
             <div class="article_comment">
                 <p><%= comment.content %></p>
             </div>
-        <% end %>
-</div>
+            <% end %>
+        </div>

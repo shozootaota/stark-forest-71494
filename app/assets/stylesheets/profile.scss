@@ -1,7 +1,13 @@
-.profile_image {
-    img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
+.profile {
+    &_image {
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+    }
+    &_list {
+        display: flex;
+        list-style: none;
     }
 }

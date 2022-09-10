@@ -25,21 +25,17 @@ class User < ApplicationRecord
   end
 
   def avatar_image
-    if profile&.avatar&.attached?
-      profile.avatar
-    else
-      'default-avatar.png'
-    end
+    profile&.avatar || 'default-avatar.png'
   end
 
-  def follow!(user)
+  def follow!(user_id:)
     if user.is_a?(User)
       user_id = user.id
     else
       user_id = user
     end
 
-    following_relationships.create!(following_id: user_id)
+    following_relationships.create!(following_id: user.id)
   end
 
   def unfollow!(user)

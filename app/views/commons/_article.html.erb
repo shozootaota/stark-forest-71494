@@ -15,7 +15,7 @@
             <div class="card_detail">
                 <%= image_tag article.user.avatar_image %>
                 <div>
-                    <p>oota</p>
+                    <p><%= article.user.profile&.nickname %></p>
                     <p><%= article.display_created_at %></p>
                 </div>
             </div>

@@ -24,6 +24,18 @@ class User < ApplicationRecord
     likes.exists?(article_id: article.id)
   end
 
+  def articles_count
+    articles.count
+  end
+
+  def following_count
+    following_relationships.count
+  end
+
+  def follower_count
+    follower_relationships.count
+  end
+
   def avatar_image
     if profile&.avatar&.attached?
       profile.avatar

@@ -2,7 +2,9 @@ class Article < ApplicationRecord
     has_one_attached :eyecatch
 
     validates :title, presence: true
+    validates :title, length: { maximum: 36 }
     validates :content, presence: true
+    validates :content, length: { maximum: 80 }
 
     has_many :comments, dependent: :destroy
     has_many :likes, dependent: :destroy

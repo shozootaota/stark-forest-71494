@@ -1,28 +1,30 @@
-<div class="container">
-    <ul>
-        <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="article_form">
+    <div class="article_form_inner">
+        <ul>
+            <% article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+        <%= form_with(model: article, local: true) do |f| %>
+        <div>
+            <%= f.label :title, '画像' %>
+        </div>
+        <div>
+            <%= f.file_field :eyecatch %>
+        </div>
+        <div>
+            <%= f.label :title, 'タイトル' %>
+        </div>
+        <div>
+            <%= f.text_field :title, class: 'text' %>
+        </div>
+        <div>
+            <%= f.label :content, '内容' %>
+        </div>
+        <div>
+            <%= f.text_area :content %>
+        </div>
+        <%= f.submit '投稿する', class: '' %>
         <% end %>
-    </ul>
-    <%= form_with(model: article, local: true) do |f| %>
-    <div>
-        <%= f.label :title, '画像' %>
     </div>
-    <div>
-        <%= f.file_field :eyecatch %>
-    </div>
-    <div>
-        <%= f.label :title, 'タイトル' %>
-    </div>
-    <div>
-        <%= f.text_field :title, class: 'text' %>
-    </div>
-    <div>
-        <%= f.label :content, '内容' %>
-    </div>
-    <div>
-        <%= f.text_area :content %>
-    </div>
-    <%= f.submit '保存', class: '' %>
-    <% end %>
 </div>

@@ -1,18 +1,24 @@
-<div class="container">
-    <ul>
-        <% @comment.errors.full_messages.each do |message| %>
-        <li>
-            <%= message %>
-        </li>
+<div class="comment">
+    <div class="comment_inner">
+        <ul>
+            <% @comments.errors.full_messages.each do |message| %>
+            <li>
+                <%= message %>
+            </li>
+            <% end %>
+        </ul>
+
+        <h2>コメント一覧</h2>
+        <% @comments.each do |comment| %>
+            <p class="comment_text"><%= comment.content %></p>
         <% end %>
-    </ul>
-    <%= form_with(model: @comment, url: article_comments_path(@comment.article), local: true) do |f| %>
-    <div>
-        <%= f.label :content, '内容' %>
+
+        <%= form_with(model: @comment, url: article_comments_path(@comment.article), local: true) do |f| %>
+        
+        <div>
+            <%= f.text_area :content %>
+        </div>
+        <%= f.submit '投稿する', class: '' %>
+        <% end %>
     </div>
-    <div>
-        <%= f.text_area :content %>
-    </div>
-    <%= f.submit '投稿する', class: '' %>
-    <% end %>
 </div>

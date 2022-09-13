@@ -1,24 +1,52 @@
 <%= link_to article_path(article) do %>
-    <div class="card">
-        <% if article.eyecatch.attached? %>
-        <div class="card_image">
+<div class="article">
+    <div class="article_inner">
+        <div class="article_image">
             <%= image_tag article.eyecatch %>
         </div>
-        <% end %>
-        <div class="card_content">
-            <div class="card_title">
-                <%= article.title %>
-            </div>
-            <div class="card_heart">
-                <%= image_tag 'heart.svg' %>
-            </div>
-            <div class="card_detail">
+        <div class="article_content">
+            <div class="article_header">
+                <%= link_to account_path(article.user) do %>
                 <%= image_tag article.user.avatar_image %>
-                <div>
-                    <p><%= article.user.profile&.nickname %></p>
-                    <p><%= article.display_created_at %></p>
+                <% end %>
+                <h2 class="article_title"><%= article.title %></h2>
+            </div>
+            <div class="article_body">
+                <p class="article_text"><%= article.content %></p>
+                <div class="article_footer">
+                    <% if user_signed_in? %>
+                    <% if current_user.liked?(article) %>
+                    <div class="article_heart">
+                        <%= link_to article_like_path(article), data: { method: 'delete' } do %>
+                        <%= image_tag 'heart-active.svg' %>
+                        <% end %>
+                    </div>
+                    <% else %>
+                    <div class="article_heart">
+                        <%= link_to article_like_path(article), data: { method: 'post' } do %>
+                        <%= image_tag 'heart.svg' %>
+                        <% end %>
+                    </div>
+                    <% end %>
+                    <% end %>
+                    <%= link_to  new_article_comment_path(article), class: "article_comment" do %>
+                    <%= image_tag 'comment.png' %>
+                    <% end %>
                 </div>
             </div>
+            <% if user_signed_in? && current_user.has_written?(article) %>
+            <div class="article_detail_actions">
+                <div class="dropdown">
+                    <%= image_tag 'actions.svg', class: 'dropbtn' %>
+                    <div class="dropdown-content mini">
+                        <%= link_to '編集する', edit_article_path(article) %>
+                        <%= link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' } %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
         </div>
     </div>
+</div>
 <% end %>
+

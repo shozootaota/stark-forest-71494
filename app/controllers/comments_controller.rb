@@ -2,13 +2,15 @@ class CommentsController < ApplicationController
     def new
         article = Article.find(params[:article_id])
         @comment = article.comments.build
+
+        @comments = article.comments
     end
 
     def create
         article = Article.find(params[:article_id])
         @comment = article.comments.build(comment_params)
         if @comment.save
-            redirect_to article_path(article), notice: 'コメントを追加'
+            redirect_to new_article_comment_path, notice: 'コメントを追加'
         else
             flash.now[:error] = '更新できませんでした'
             render :new

@@ -1,13 +1,129 @@
 .profile {
+    padding-top: 60px;
+
+    &_inner {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    &_detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+    }
     &_image {
+        width: 40%;
+        text-align: center;
+
         img {
-            width: 56px;
-            height: 56px;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
             border-radius: 50%;
         }
     }
+
+    &_content {
+        width: 60%;
+    }
+
+    &_name {
+        font-size: 24px;
+        display: inline-block;
+        margin-right: 80px;
+        margin-left: 50px;
+    }
+
     &_list {
         display: flex;
         list-style: none;
+        margin-top: 10px;
+
+        li {
+            margin-right: 90px;
+        }
+
+        li:last-of-type {
+            margin-right: 0;
+        }
     }
+    &_introduction {
+        margin-top: 25px;
+        
+    }
+
+    &_thumbnail_list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    &_thumbnail img {
+        height: 200px;
+        object-fit: cover;
+    }
+
+
+    &_link {
+        width: calc((100% - 30px) / 3);
+        margin-right: 15px;
+        margin-bottom: 15px;
+    }
+
+    &_link:nth-of-type(3n) {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+.profile {
+
+    &_detail {
+        display: block;
+    }
+
+    &_image {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+
+        img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+        }
+    }
+
+    &_content {
+        text-align: center;
+        width: 100%;
+    }
+
+    &_name {
+        display: block;
+        font-size: 18px;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    &_list {
+        justify-content: center;
+        margin-top: 20px;
+        li {
+            margin-right: 40px;
+        }
+    }
+
+    &_thumbnail img {
+        height: 130px;
+    }
+
+
+    &_link {
+        width: calc((100% - 10px) / 3);
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+}
+
 }

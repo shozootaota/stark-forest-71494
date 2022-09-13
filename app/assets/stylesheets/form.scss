@@ -1,3 +1,13 @@
+.article_form {
+  padding-top: 60px;
+
+  &_inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+}
+
 input {
   &.text {
     width: 100%;
@@ -15,7 +25,7 @@ textarea {
   width: 100%;
   margin: 8px 0px;
   padding: 8px 8px;
-  min-height: 440px;
+  min-height: 40px;
   resize: vertical;
   border: 1px solid #EBEBEB;
 }

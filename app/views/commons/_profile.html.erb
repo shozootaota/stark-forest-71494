@@ -1,25 +1,41 @@
-<div class="container">
-    <div class="profile_image">
-        <%= image_tag  user.avatar_image %>
-    </div>
-    <div class="profile_name">
-        <%= user.profile&.nickname %>
-    </div>
-    <% if user == current_user %>
-    <%= link_to 'Edit', edit_profile_path %>
-    <% else %>
-    <% if current_user&.has_followed?(user) %>
-    <%= link_to 'フォロー解除', account_unfollows_path(user), data: {method: 'post'} %>
-    <% else %>
-    <%= link_to 'フォロー', account_follows_path(user), data: {method: 'post'} %>
-    <% end %>
-    <% end %>
+<div class="profile">
+    <div class="profile_inner">
+        <div class="profile_detail">
+            <div class="profile_image">
+                <%= image_tag  user.avatar_image %>
+            </div>
+            <div class="profile_content">
+                <p class="profile_name"><%= user.profile&.nickname %></p>
+                <% if user == current_user %>
+                    <%= link_to 'プロフィールを編集する', edit_profile_path %>
+                <% else %>
+                    <% if current_user&.has_followed?(user) %>
+                        <%= link_to 'フォロー解除', account_unfollows_path(user), data: {method: 'post'} %>
+                    <% else %>
+                        <%= link_to 'フォローする', account_follows_path(user), data: {method: 'post'} %>
+                    <% end %>
+                <% end %>
+                <ul class="profile_list">
+                    <li>投稿 <%= user.articles_count %></li>
+                    <li>フォロワー <%= user.follower_count %></li>
+                    <li>フォロー <%= user.following_count %></li>
+                </ul>
+                <p class="profile_introduction">
+                    <%= user.profile&.introduction %>
+                </p>
+            </div>
+        </div>
 
-    <div class="profile_introduction">
-        <%= user.profile&.introduction %>
+        <ul class="profile_thumbnail_list">
+            <% user.articles.each do |article| %>
+                <%= link_to article_path(article), class: "profile_link" do %>
+                    <% if article.eyecatch.attached? %>
+                        <div class="profile_thumbnail">
+                            <%= image_tag article.eyecatch %>
+                        </div>
+                    <% end %>
+                <% end %>
+            <% end %>
+        </ul>
     </div>
-
-    <% user.articles.each do |article| %>
-    <%= render 'commons/article', article: article %>
-    <% end %>
 </div>

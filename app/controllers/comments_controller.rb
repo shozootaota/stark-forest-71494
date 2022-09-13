@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
         article = Article.find(params[:article_id])
         @comment = article.comments.build
 
-        @comments = article.comments
     end
 
     def create

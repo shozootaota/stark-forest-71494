@@ -7,7 +7,7 @@
             <div class="profile_content">
                 <p class="profile_name"><%= user.profile&.nickname %></p>
                 <% if user == current_user %>
-                    <%= link_to 'プロフィールを編集する', edit_profile_path %>
+                    <%= link_to 'プロフィールを編集する', edit_profile_path, class: 'profile_content_link' %>
                 <% else %>
                     <% if current_user&.has_followed?(user) %>
                         <%= link_to 'フォロー解除', account_unfollows_path(user), data: {method: 'post'} %>

@@ -20,9 +20,9 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <% if !current_page?(root_path) %>
-                <%= link_to :back do %>
-                <%= image_tag 'back.svg', class: 'navbar_back' %>
-                <% end %>
+                    <%= link_to :back do %>
+                        <%= image_tag 'back.png', class: 'navbar_back' %>
+                    <% end %>
                 <% end %>
                 <%= link_to 'Instagram', root_path, class: "navbar-brand" %>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

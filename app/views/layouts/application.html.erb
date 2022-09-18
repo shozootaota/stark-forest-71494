@@ -39,9 +39,7 @@
                             <%= link_to 'プロフィール', profile_path, class: "nav-link" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to  favorites_path, class: "nav-link" do %>
-                                <%= image_tag 'heart.svg' %>
-                            <% end %>
+                            <%= link_to 'いいね', favorites_path, class: "nav-link" %>
                         </li>
                         <li class="nav-item">
                             <%= link_to 'タイムライン', timeline_path, class: "nav-link" %>

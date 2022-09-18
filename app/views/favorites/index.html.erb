@@ -1,6 +1,3 @@
-<div class="container">
-    <h2>お気に入りした記事</h2>
-    <% @articles.each do |article| %>
+<% @articles.each do |article| %>
     <%= render 'commons/article', article: article %>
-    <% end %>
-</div>
+<% end %>

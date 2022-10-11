@@ -14,6 +14,11 @@
             </li>
             <% end %>
         </ul>
+
+        <% @comments.each do |comment| %>
+            <p><%= comment.content %></p>
+        <% end %>
+
         <h2>コメント投稿する</h2>
 
         <%= form_with(model: @comment, url: article_comments_path(@comment.article), local: true) do |f| %>

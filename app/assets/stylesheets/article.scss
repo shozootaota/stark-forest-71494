@@ -1,5 +1,5 @@
 .article {
-    padding: 60px 10px 0;
+    padding: 60px 10px;
 
     &_inner {
         display: flex;
@@ -71,12 +71,32 @@
     right: 15px;
   }
 
+  &_comment_inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
+    padding: 15px;
+
+    h2 {
+      font-size: 24px;
+    }
+
+    p {
+      padding-bottom: 10px;
+    }
+  }
+
 }
 
 @media screen and (max-width: 1024px) {
 .article {
     &_inner {
       display: block;
+      max-width: 700px;
+    }
+
+    &_comment_inner {
       max-width: 700px;
     }
 

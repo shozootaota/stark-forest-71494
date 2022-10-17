@@ -28,7 +28,7 @@
                             </div>
                             <% end %>
                         <% end %>
-                        <%= link_to article_comments_path(@article), class: "article_comment" do %>
+                        <%= link_to new_article_comment_path(@article), class: "article_comment" do %>
                             <%= image_tag 'comment.png' %>
                         <% end %>
                 </div>
@@ -45,5 +45,11 @@
             </div>
             <% end %>
         </div>
+    </div>
+    <div class="article_comment_inner">
+        <h2>コメント一覧</h2>
+        <% @comments.each do |comment| %>
+            <p><%= comment.content %></p>
+        <% end %>
     </div>
 </div>

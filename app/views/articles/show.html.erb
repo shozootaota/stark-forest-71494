@@ -49,6 +49,8 @@
     <div class="article_comment_inner">
         <h2>コメント一覧</h2>
         <% @comments.each do |comment| %>
+            <%= image_tag comment.user.avatar_image %>
+            <p><%= comment.user.profile&.nickname %></p>
             <p><%= comment.content %></p>
         <% end %>
     </div>

@@ -48,10 +48,17 @@
     </div>
     <div class="article_comment_inner">
         <h2>コメント一覧</h2>
-        <% @comments.each do |comment| %>
-            <%= image_tag comment.user.avatar_image %>
-            <p><%= comment.user.profile&.nickname %></p>
-            <p><%= comment.content %></p>
-        <% end %>
+            <% @comments.each do |comment| %>
+                <div class="article_comment_content">
+                    <div class="article_comment_img">
+                        <%= image_tag comment.user.avatar_image %>
+                    </div>
+                    <div class="article_comment_body">
+                        <p><%= comment.user.profile&.nickname %></p>
+                        <p><%= comment.content %></p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>

@@ -44,10 +44,12 @@ ActiveRecord::Schema.define(version: 2022_09_07_193346) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "article_id", null: false
+    t.integer "user_id", null: false
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
